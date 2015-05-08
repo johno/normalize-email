@@ -1,6 +1,6 @@
 # normalize-email [![Build Status](https://secure.travis-ci.org/johnotander/normalize-email.png?branch=master)](https://travis-ci.org/johnotander/normalize-email)
 
-Normalize emails for uniqueness verification. This will convert the email to lowercase, remove dots (`.`), and plus signs
+Normalize emails for uniqueness validation. This will convert the email to lowercase, remove dots (`.`), and plus signs
 followed by arbitrary strings (`+foobar`).
 
 Based on [normailize](https://github.com/soundcloud/normailize).
