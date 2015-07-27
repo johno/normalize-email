@@ -19,7 +19,10 @@ module.exports = function normalizeEmail(email) {
 
   if (isNormalizeableProvider(domain)) {
     username = username.split('+')[0]
-    username = username.replace(/\./g, '')
+
+    if(!/hotmail\.com$/.test(domain)) {
+      username = username.replace(/\./g, '')
+    }
   }
 
   if (domain == 'googlemail.com') {

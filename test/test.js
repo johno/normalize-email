@@ -15,10 +15,7 @@ var hotmailEmailsToNormalize = [
   'johnotander@hotmail.com',
   'johnotander@hotmail.com',
   'johnotander@HOTMAIL.com',
-  'johnotander+foobar@hotmail.com',
-  'john.o.t.a.n.d.er+foobar@hotmail.com',
-  'JOHN.o.t.a.n.d.er+foobar@hotmail.com',
-  'john.otander@hotmail.com'
+  'Johnotander@hotmail.com'
 ]
 
 var liveEmailsToNormalize = [
@@ -43,6 +40,10 @@ describe('normalize-email', function() {
     hotmailEmailsToNormalize.forEach(function(email) {
       assert.equal(normalizeEmail(email), 'johnotander@hotmail.com')
     })
+  })
+
+  it('should not remove dots from hotmail emails', function() {
+    assert.equal(normalizeEmail('john.otander@hotmail.com'), 'john.otander@hotmail.com')
   })
 
   it('should normalize live emails', function() {
