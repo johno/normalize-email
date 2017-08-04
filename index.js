@@ -1,37 +1,49 @@
-'use strict'
+'use strict';
 
-var isEmail = require('is-email')
+var PLUS_ONLY = /\+.*$/;
+var PLUS_AND_DOT = /\.|\+.*$/g;
+var normalizeableProviders = {
+  'gmail.com': {
+    'cut': PLUS_AND_DOT
+  },
+  'googlemail.com': {
+    'cut': PLUS_AND_DOT,
+    'aliasOf': 'gmail.com'
+  },
+  'hotmail.com': {
+    'cut': PLUS_ONLY
+  },
+  'live.com': {
+    'cut': PLUS_AND_DOT
+  },
+  'outlook.com': {
+    'cut': PLUS_ONLY
+  }
+};
 
-module.exports = function normalizeEmail(email) {
-  if (typeof email != 'string') {
-    throw new TypeError('normalize-email expects a string')
+module.exports = function normalizeEmail(eMail) {
+  if (typeof eMail != 'string') {
+    throw new TypeError('normalize-email expects a string');
   }
 
-  if (!isEmail(email)) {
-    return email
+  var email = eMail.toLowerCase();
+  var emailParts = email.split(/@/);
+
+  if (emailParts.length !== 2) {
+    return eMail;
   }
 
-  email = email.toLowerCase()
+  var username = emailParts[0];
+  var domain = emailParts[1];
 
-  var emailParts = email.split(/@/)
-  var username = emailParts[0]
-  var domain = emailParts[1]
-
-  if (isNormalizeableProvider(domain)) {
-    username = username.split('+')[0]
-
-    if(!/hotmail\.com$/.test(domain)) {
-      username = username.replace(/\./g, '')
+  if (normalizeableProviders.hasOwnProperty(domain)) {
+    if (normalizeableProviders[domain].hasOwnProperty('cut')) {
+      username = username.replace(normalizeableProviders[domain]['cut'], '');
+    }
+    if (normalizeableProviders[domain].hasOwnProperty('aliasOf')) {
+      domain = normalizeableProviders[domain]['aliasOf'];
     }
   }
 
-  if (domain == 'googlemail.com') {
-    domain = 'gmail.com'
-  }
-
-  return username + '@' + domain
-}
-
-function isNormalizeableProvider(domain) {
-  return /^hotmail\.com|gmail\.com|googlemail\.com|live\.com$/.test(domain)
+  return username + '@' + domain;
 }
