@@ -1,0 +1,6 @@
+.npmignore
+.gitignore
+.travis.yml
+package-lock.json
+node_modules/
+.git/
