@@ -19,16 +19,14 @@
     "normalize",
     "gmail",
     "hotmail",
-    "live"
+    "live",
+	"outlook"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/johnotander/normalize-email/issues"
   },
   "homepage": "https://github.com/johnotander/normalize-email",
-  "dependencies": {
-    "is-email": "^0.1.1"
-  },
   "devDependencies": {
     "mocha": "*"
   }
