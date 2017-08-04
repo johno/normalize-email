@@ -28,6 +28,13 @@ var liveEmailsToNormalize = [
   'john.otander@live.com'
 ]
 
+var outlookEmailsToNormalize = [
+  'john.otander@outlook.com',
+  'JOHN.otander@outlook.com',
+  'john.Otander+any.label@outlook.com',
+  'john.otander+foobar@outlook.com',
+]
+
 describe('normalize-email', function() {
 
   it('should normalize gmail emails', function() {
@@ -51,4 +58,11 @@ describe('normalize-email', function() {
       assert.equal(normalizeEmail(email), 'johnotander@live.com')
     })
   })
+  
+  it('should normalize outlook emails', function() {
+    outlookEmailsToNormalize.forEach(function(email) {
+      assert.equal(normalizeEmail(email), 'john.otander@outlook.com')
+    })
+  })
+  
 })
