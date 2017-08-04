@@ -38,10 +38,10 @@ module.exports = function normalizeEmail(eMail) {
 
   if (normalizeableProviders.hasOwnProperty(domain)) {
     if (normalizeableProviders[domain].hasOwnProperty('cut')) {
-      username = username.replace(normalizeableProviders[domain]['cut'], '');
+      username = username.replace(normalizeableProviders[domain].cut, '');
     }
     if (normalizeableProviders[domain].hasOwnProperty('aliasOf')) {
-      domain = normalizeableProviders[domain]['aliasOf'];
+      domain = normalizeableProviders[domain].aliasOf;
     }
   }
 
