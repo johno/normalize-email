@@ -23,6 +23,21 @@ normalizeEmail('johnotander+foobar@gmail.com')  // => 'johnotander@gmail.com'
 normalizeEmail('JOHN.OTANDER+OHAI@gmail.com')   // => 'johnotander@gmail.com'
 ```
 
+## Normalization Rules
+
+Normalization rules vary by domain. The rules implemented by this package are:
+1. "plus" &mdash; remove first `+` mark and anything after it
+1. "dot" &mdash; remove all `.` marks
+1. "none" &mdash; do nothing
+
+Emails are normalized by domain as follows:
+1. `gmail.com` &mdash; plus and dot
+1. `googlemail.com` (alias of gmail.com) &mdash; plus and dot
+1. hotmail.com &mdash; plus only
+1. live.com &mdash; plus and dot
+1. outlook.com &mdash; plus only
+1. all other domains &mdash; none
+
 ## License
 
 MIT
