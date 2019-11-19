@@ -34,7 +34,7 @@ Emails are normalized by domain as follows:
 1. `gmail.com` &mdash; plus and dot
 1. `googlemail.com` (alias of gmail.com) &mdash; plus and dot
 1. hotmail.com &mdash; plus only
-1. live.com &mdash; plus and dot
+1. live.com &mdash; plus only
 1. outlook.com &mdash; plus only
 1. all other domains &mdash; none
 

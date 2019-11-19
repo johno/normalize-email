@@ -14,7 +14,7 @@ var normalizeableProviders = {
     'cut': PLUS_ONLY
   },
   'live.com': {
-    'cut': PLUS_AND_DOT
+    'cut': PLUS_ONLY
   },
   'outlook.com': {
     'cut': PLUS_ONLY
