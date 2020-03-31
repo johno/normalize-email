@@ -2,6 +2,7 @@
 
 var PLUS_ONLY = /\+.*$/;
 var PLUS_AND_DOT = /\.|\+.*$/g;
+var PLUS_AND_DASH = /-.*|\+.*$/g;
 var normalizeableProviders = {
   'gmail.com': {
     'cut': PLUS_AND_DOT
@@ -18,6 +19,9 @@ var normalizeableProviders = {
   },
   'outlook.com': {
     'cut': PLUS_ONLY
+  },
+  'yahoo.com': {
+    'cut': PLUS_AND_DASH
   }
 };
 
